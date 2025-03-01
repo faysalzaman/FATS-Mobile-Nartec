@@ -19,20 +19,3 @@ Before running this project, make sure you have the following installed:
 ### Installation
 
 1. Clone the repository
-
-
-## Contributing
-
-[Instructions for how others can contribute to your project]
-
-## License
-
-This project is licensed under the [License Name] - see the LICENSE.md file for details
-
-## Authors
-
-* **Your Name** - *Initial work*
-
-## Acknowledgments
-
-* [Any acknowledgments you want to make]
