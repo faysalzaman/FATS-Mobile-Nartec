@@ -15,10 +15,7 @@ class EmployeeNameIdServices {
     final String url = "${Constant.baseUrl}/GetAllEmployeeList";
     final uri = Uri.parse(url);
 
-    final headers = <String, String>{
-      "Authorization": token,
-      "Content-Type": "application/json",
-    };
+    final headers = <String, String>{"Authorization": token};
 
     try {
       var response = await http.get(uri, headers: headers);
