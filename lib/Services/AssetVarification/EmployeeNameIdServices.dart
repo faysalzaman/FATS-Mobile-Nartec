@@ -23,7 +23,7 @@ class EmployeeNameIdServices {
     try {
       var response = await http.get(uri, headers: headers);
 
-      if (response.statusCode == 200) {
+      if (response.statusCode == 200 || response.statusCode == 201) {
         var jsonResponse = json.decode(response.body) as List;
         List<EmployeeNameIdModel> employeeNameIdModel =
             jsonResponse.map((e) => EmployeeNameIdModel.fromJson(e)).toList();
@@ -33,7 +33,7 @@ class EmployeeNameIdServices {
       }
     } catch (e) {
       print(e);
-      throw Exception('Failed to load data');
+      throw Exception(e.toString().replaceAll("Exception: ", ""));
     }
   }
 }

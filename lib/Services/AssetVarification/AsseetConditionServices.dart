@@ -1,5 +1,7 @@
 // ignore_for_file: avoid_print
 
+import 'dart:developer';
+
 import 'package:fats_mobile_nartec/models/AssetConditionModel.dart';
 
 import 'package:http/http.dart' as http;
@@ -16,25 +18,22 @@ class AssetConditionServices {
     final String url = "${Constant.baseUrl}/GetAllAssetCondition";
     final uri = Uri.parse(url);
 
-    final headers = <String, String>{
-      "Authorization": token,
-      "Content-Type": "application/json",
-    };
+    final headers = <String, String>{"Authorization": token};
 
     try {
       var response = await http.get(uri, headers: headers);
 
-      if (response.statusCode == 200) {
+      if (response.statusCode == 200 || response.statusCode == 201) {
         var jsonResponse = json.decode(response.body) as List;
         List<AssetConditionModel> assetConditionModel =
             jsonResponse.map((e) => AssetConditionModel.fromJson(e)).toList();
         return assetConditionModel;
       } else {
-        throw Exception('Failed to load cities list');
+        throw Exception("Failed to load data");
       }
     } catch (e) {
-      print(e);
-      throw Exception('Failed to load cities list');
+      log(e.toString());
+      throw Exception(e.toString().replaceAll("Exception: ", ""));
     }
   }
 }

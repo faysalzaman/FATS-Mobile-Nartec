@@ -25,7 +25,7 @@ class TagNumberModel {
 }
 
 class Recordset {
-  int? tblAssetMasterEncodeAssetCaptureID;
+  num? tblAssetMasterEncodeAssetCaptureID;
   String? majorCategory;
   String? majorCategoryDescription;
   String? mInorCategory;
@@ -60,12 +60,12 @@ class Recordset {
   String? buildingName;
   String? buildingAddress;
   String? userLoginID;
-  String? mainSubSeriesNo;
+  num? mainSubSeriesNo;
   String? assetdatecaptured;
   String? assetTimeCaptured;
   String? assetdatescanned;
   String? assettimeScanned;
-  int? qTY;
+  num? qTY;
   String? phoneExtNo;
   String? fullLocationDetails;
 

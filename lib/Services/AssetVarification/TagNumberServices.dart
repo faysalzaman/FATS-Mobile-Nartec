@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -28,17 +30,15 @@ class TagNumberServices {
         body: json.encode(body),
       );
 
-      print(response.body);
-
-      if (response.statusCode == 200) {
+      if (response.statusCode == 200 || response.statusCode == 201) {
         var data = json.decode(response.body);
         return TagNumberModel.fromJson(data);
       } else {
-        throw Exception('Failed to load cities list');
+        throw Exception("Failed to load data");
       }
     } catch (e) {
-      print(e);
-      throw Exception('Failed to load cities list');
+      log(e.toString());
+      throw Exception(e.toString().replaceAll("Exception: ", ""));
     }
   }
 }

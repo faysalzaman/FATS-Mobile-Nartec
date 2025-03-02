@@ -209,204 +209,207 @@ class _AssetTagInformationState extends State<AssetTagInformation> {
                               child: Row(
                                 children: <Widget>[
                                   Expanded(
-                                    flex: 2,
                                     child: TextFormFieldWidget(
                                       controller: _tagController,
                                       height: 50,
                                     ),
                                   ),
                                   const SizedBox(width: 5),
-                                  Expanded(
-                                    flex: 1,
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(50),
-                                      child: ElevatedButton(
-                                        style: ElevatedButton.styleFrom(
-                                          backgroundColor:
-                                              Constant.primaryColor,
-                                          foregroundColor: Colors.white,
-                                        ),
-                                        onPressed: () async {
-                                          TagNumberServices.tagNo(
-                                                  _tagController.text)
-                                              .then((value) {
-                                            var daoName =
+                                  Container(
+                                    height: 50,
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 10),
+                                    alignment: Alignment.center,
+                                    decoration: BoxDecoration(
+                                      color: Constant.primaryColor,
+                                      border: Border.all(
+                                        color: Constant.primaryColor,
+                                      ),
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                    child: GestureDetector(
+                                      onTap: () async {
+                                        TagNumberServices.tagNo(
+                                                _tagController.text)
+                                            .then((value) {
+                                          var daoName =
+                                              value.recordset![0].daoName ?? "";
+
+                                          var businessUnit = value
+                                                  .recordset![0].businessUnit ??
+                                              "";
+                                          var buildingAddress = value
+                                                  .recordset![0]
+                                                  .buildingAddress ??
+                                              "";
+                                          var buildingNo =
+                                              value.recordset![0].bUILDINGNO ??
+                                                  "";
+                                          var floorNo =
+                                              value.recordset![0].fLOORNO ?? "";
+
+                                          setState(() {
+                                            _assetLocationDetailsController
+                                                    .text =
+                                                "$daoName - $businessUnit\n$buildingAddress\n$buildingNo - $floorNo";
+
+                                            tblAssetMasterEncodeAssetCaptureID =
+                                                int.parse(value.recordset![0]
+                                                    .tblAssetMasterEncodeAssetCaptureID
+                                                    .toString());
+                                            majorCategory = value.recordset![0]
+                                                    .majorCategory ??
+                                                "";
+                                            majorCategoryDescription = value
+                                                    .recordset![0]
+                                                    .majorCategoryDescription ??
+                                                "";
+                                            minorCategory = value.recordset![0]
+                                                    .minorCategoryDescription ??
+                                                "";
+                                            minorCategoryDescription = value
+                                                    .recordset![0]
+                                                    .minorCategoryDescription ??
+                                                "";
+                                            tagNumber =
+                                                value.recordset![0].tagNumber ??
+                                                    "";
+                                            serialNumber = value.recordset![0]
+                                                    .sERIALnUMBER ??
+                                                "";
+                                            assetDescription = value
+                                                    .recordset![0]
+                                                    .aSSETdESCRIPTION ??
+                                                "";
+                                            assetType =
+                                                value.recordset![0].assettYPE ??
+                                                    "";
+                                            assetCondition = value.recordset![0]
+                                                    .aSSETcONDITION ??
+                                                "";
+                                            country =
+                                                value.recordset![0].cOUNTRY ??
+                                                    "";
+                                            region =
+                                                value.recordset![0].rEGION ??
+                                                    "";
+                                            cityName =
+                                                value.recordset![0].cityName ??
+                                                    "";
+                                            dao = value.recordset![0].dao ?? "";
+                                            daoName =
                                                 value.recordset![0].daoName ??
                                                     "";
-
-                                            var businessUnit = value
-                                                    .recordset![0]
+                                            businessUnit = value.recordset![0]
                                                     .businessUnit ??
                                                 "";
-                                            var buildingAddress = value
-                                                    .recordset![0]
-                                                    .buildingAddress ??
-                                                "";
-                                            var buildingNo = value
+                                            buildingNo = value
                                                     .recordset![0].bUILDINGNO ??
                                                 "";
-                                            var floorNo =
+                                            floorNo =
                                                 value.recordset![0].fLOORNO ??
                                                     "";
-
-                                            setState(() {
-                                              _assetLocationDetailsController
-                                                      .text =
-                                                  "$daoName - $businessUnit\n$buildingAddress\n$buildingNo - $floorNo";
-
-                                              tblAssetMasterEncodeAssetCaptureID =
-                                                  value.recordset![0]
-                                                          .tblAssetMasterEncodeAssetCaptureID ??
-                                                      0;
-                                              majorCategory = value
-                                                      .recordset![0]
-                                                      .majorCategory ??
-                                                  "";
-                                              majorCategoryDescription = value
-                                                      .recordset![0]
-                                                      .majorCategoryDescription ??
-                                                  "";
-                                              minorCategory = value
-                                                      .recordset![0]
-                                                      .minorCategoryDescription ??
-                                                  "";
-                                              minorCategoryDescription = value
-                                                      .recordset![0]
-                                                      .minorCategoryDescription ??
-                                                  "";
-                                              tagNumber = value.recordset![0]
-                                                      .tagNumber ??
-                                                  "";
-                                              serialNumber = value.recordset![0]
-                                                      .sERIALnUMBER ??
-                                                  "";
-                                              assetDescription = value
-                                                      .recordset![0]
-                                                      .aSSETdESCRIPTION ??
-                                                  "";
-                                              assetType = value.recordset![0]
-                                                      .assettYPE ??
-                                                  "";
-                                              assetCondition = value
-                                                      .recordset![0]
-                                                      .aSSETcONDITION ??
-                                                  "";
-                                              country =
-                                                  value.recordset![0].cOUNTRY ??
-                                                      "";
-                                              region =
-                                                  value.recordset![0].rEGION ??
-                                                      "";
-                                              cityName = value
-                                                      .recordset![0].cityName ??
-                                                  "";
-                                              dao =
-                                                  value.recordset![0].dao ?? "";
-                                              daoName =
-                                                  value.recordset![0].daoName ??
-                                                      "";
-                                              businessUnit = value.recordset![0]
-                                                      .businessUnit ??
-                                                  "";
-                                              buildingNo = value.recordset![0]
-                                                      .bUILDINGNO ??
-                                                  "";
-                                              floorNo =
-                                                  value.recordset![0].fLOORNO ??
-                                                      "";
-                                              employeeID = value.recordset![0]
-                                                      .eMPLOYEEID ??
-                                                  "";
-                                              ponNumber = value
-                                                      .recordset![0].ponUmber ??
-                                                  "";
-                                              poDate =
-                                                  value.recordset![0].podate ??
-                                                      "";
-                                              deliveryNoteNo = value
-                                                      .recordset![0]
-                                                      .deliveryNoteNo ??
-                                                  "";
-                                              supplier = value
-                                                      .recordset![0].supplier ??
-                                                  "";
-                                              invoiceNo = value.recordset![0]
-                                                      .invoiceNo ??
-                                                  "";
-                                              invoiceDate = value.recordset![0]
-                                                      .invoiceDate ??
-                                                  "";
-                                              modelOfAsset = value.recordset![0]
-                                                      .modelofAsset ??
-                                                  "";
-                                              manufacturer = value.recordset![0]
-                                                      .manufacturer ??
-                                                  "";
-                                              ownership = value.recordset![0]
-                                                      .ownership ??
-                                                  "";
-                                              bought =
-                                                  value.recordset![0].bought ??
-                                                      "";
-                                              terminalID = value.recordset![0]
-                                                      .terminalID ??
-                                                  "";
-                                              atmNumber = value.recordset![0]
-                                                      .aTMNumber ??
-                                                  "";
-                                              locationTag = value.recordset![0]
-                                                      .locationTag ??
-                                                  "";
-                                              assetDateCaptured = value
-                                                      .recordset![0]
-                                                      .assetdatecaptured ??
-                                                  "";
-                                              assetTimeCaptured = value
-                                                      .recordset![0]
-                                                      .assetTimeCaptured ??
-                                                  "";
-                                              assetDateScanned = value
-                                                      .recordset![0]
-                                                      .assetdatescanned ??
-                                                  "";
-                                              assetTimeScanned = value
-                                                      .recordset![0]
-                                                      .assettimeScanned ??
-                                                  "";
-                                              qty = value.recordset![0].qTY!;
-                                              phoneExtNo = value.recordset?[0]
-                                                      .phoneExtNo ??
-                                                  "";
-                                              userLoginID = value.recordset?[0]
-                                                      .userLoginID ??
-                                                  "";
-                                            });
-                                            // unFocused the textfield
-                                            FocusScope.of(context).unfocus();
-                                            print(
-                                                "$daoName - $businessUnit\n$buildingAddress\n$buildingNo - $floorNo");
-                                          }).onError((error, stackTrace) {
-                                            FocusScope.of(context).unfocus();
-                                            _assetLocationDetailsController
-                                                .text = "";
-                                            _assetLocationDetailsController
-                                                .text = "No Data Found";
-                                            ScaffoldMessenger.of(context)
-                                                .showSnackBar(
-                                              const SnackBar(
-                                                content: Text(
-                                                  "No Data Found",
-                                                  style: TextStyle(
-                                                    color: Colors.white,
-                                                  ),
-                                                ),
-                                                backgroundColor:
-                                                    Colors.redAccent,
-                                              ),
-                                            );
+                                            employeeID = value
+                                                    .recordset![0].eMPLOYEEID ??
+                                                "";
+                                            ponNumber =
+                                                value.recordset![0].ponUmber ??
+                                                    "";
+                                            poDate =
+                                                value.recordset![0].podate ??
+                                                    "";
+                                            deliveryNoteNo = value.recordset![0]
+                                                    .deliveryNoteNo ??
+                                                "";
+                                            supplier =
+                                                value.recordset![0].supplier ??
+                                                    "";
+                                            invoiceNo =
+                                                value.recordset![0].invoiceNo ??
+                                                    "";
+                                            invoiceDate = value.recordset![0]
+                                                    .invoiceDate ??
+                                                "";
+                                            modelOfAsset = value.recordset![0]
+                                                    .modelofAsset ??
+                                                "";
+                                            manufacturer = value.recordset![0]
+                                                    .manufacturer ??
+                                                "";
+                                            ownership =
+                                                value.recordset![0].ownership ??
+                                                    "";
+                                            bought =
+                                                value.recordset![0].bought ??
+                                                    "";
+                                            terminalID = value
+                                                    .recordset![0].terminalID ??
+                                                "";
+                                            atmNumber =
+                                                value.recordset![0].aTMNumber ??
+                                                    "";
+                                            locationTag = value.recordset![0]
+                                                    .locationTag ??
+                                                "";
+                                            assetDateCaptured = value
+                                                    .recordset![0]
+                                                    .assetdatecaptured ??
+                                                "";
+                                            assetTimeCaptured = value
+                                                    .recordset![0]
+                                                    .assetTimeCaptured ??
+                                                "";
+                                            assetDateScanned = value
+                                                    .recordset![0]
+                                                    .assetdatescanned ??
+                                                "";
+                                            assetTimeScanned = value
+                                                    .recordset![0]
+                                                    .assettimeScanned ??
+                                                "";
+                                            qty = value.recordset![0].qTY!
+                                                .toInt();
+                                            phoneExtNo = value
+                                                    .recordset?[0].phoneExtNo ??
+                                                "";
+                                            userLoginID = value.recordset?[0]
+                                                    .userLoginID ??
+                                                "";
                                           });
-                                        },
-                                        child: const Text('Search'),
+
+                                          print(tagNumber);
+                                          // unFocused the textfield
+                                          FocusScope.of(context).unfocus();
+                                          print(
+                                              "$daoName - $businessUnit\n$buildingAddress\n$buildingNo - $floorNo");
+                                        }).onError((error, stackTrace) {
+                                          FocusScope.of(context).unfocus();
+                                          _assetLocationDetailsController.text =
+                                              "";
+                                          _assetLocationDetailsController.text =
+                                              "No Data Found";
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(
+                                            SnackBar(
+                                              content: Text(
+                                                error.toString().replaceAll(
+                                                    "Exception: ", ""),
+                                                style: TextStyle(
+                                                  color: Colors.white,
+                                                ),
+                                              ),
+                                              backgroundColor: Colors.redAccent,
+                                            ),
+                                          );
+                                        });
+                                      },
+                                      child: const Text(
+                                        'Search',
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.bold,
+                                        ),
                                       ),
                                     ),
                                   ),
