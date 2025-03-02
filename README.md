@@ -1,17 +1,21 @@
-# fats_mobile_nartec
+# Fats Mobile Nartec
 
-A new Flutter project.
+A Flutter mobile application project.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+This project is a Flutter application that [brief description of what your app does].
 
-A few resources to get you started if this is your first Flutter project:
+### Prerequisites
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Before running this project, make sure you have the following installed:
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-# FATS-Mobile-Nartec
+* Flutter SDK
+* Dart SDK
+* Android Studio / VS Code
+* Android SDK (for Android development)
+* Xcode (for iOS development, macOS only)
+
+### Installation
+
+1. Clone the repository
