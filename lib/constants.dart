@@ -10,6 +10,9 @@ class Constant {
   static String baseUrl = "https://nartec.fatsme.online/api";
   // static String host = 'mala.fatsme.online';
 
+  // static String baseUrl = "https://gtrack.online:7003/api";
+  // static String host = 'mala.fatsme.online';
+
   static String placeHolderImage =
       "https://www.kpriet.ac.in/asset/frontend/images/nodata.png";
 
